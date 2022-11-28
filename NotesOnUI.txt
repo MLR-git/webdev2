@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------------------
+Component-Based UI Design
+--------------------------------------------------------------------------------------------
+Components make up sections, and can have their own styling -> Navbar, main section, footer, sidebar, etc.
+Consistency can be achieved across pages by using nested routing with premade layouts.
+
+
+--------------------------------------------------------------------------------------------
+React-Bootstrap
+--------------------------------------------------------------------------------------------
+Every Bootstrap component has been rebuilt as a React component.
+Command:
+    npm install react-bootstrap bootstrap 
+
+
+
+--------------------------------------------------------------------------------------------
+Material UI
+--------------------------------------------------------------------------------------------
+Open source design system by Google
+Command:
+    npm install @mui/material @emotion/react @emotion/styled
+
+Box, Card, CardContent, Container, Grid, Typography, useTheme 
+are some common components used in mui
+
+
+
+--------------------------------------------------------------------------------------------
+Scalable Vector Graphics (SVG)
+--------------------------------------------------------------------------------------------
+An XML-based markup language for describing 2D vector graphics. Used for drawing icons and graphs in the browser.
+Vector-based graphics are superior to pixel-based graphics for scaling.
