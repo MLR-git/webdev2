@@ -1,0 +1,84 @@
+Separation of Concerns
+--------------------------------------------------------------------------------------------
+In React, all data flows from the top to the bottom of the DOM tree
+For children to pass data up to their parents, the parent must provide a callback function as a prop
+This way, siblings can also communicate with each other via the parent
+
+Ideally, we create elements that are minimally dependent on other elements (separation of concerns)
+
+
+--------------------------------------------------------------------------------------------
+Routing
+--------------------------------------------------------------------------------------------
+Once an HTML page is loaded, all changes to the interface can be made on the client side with React.
+If the application has multiple pages, there are, effectively, multiple sets of components to render.
+Navigation between pages requires React to switch between pages by rendering the correct components,
+based on the user's selected link.
+
+A React Router provides this capability: a dynamic routing (routing takes place during app rendering) 
+library for React, composed of react-router and react-router-dom.
+Functionally, all routing takes place on a single page, making navigation seamless, and even allows use
+of the browser's back and refresh buttons.
+
+Routing requires three steps:
+    1. Define the router we're using
+        The <BrowserRouter> component wraps the <App> component, allowing all defined routes to be used 
+        throughout the tree of components.
+    2. Define what routes are available in the app 
+        (which URL paths, and which components are associated with each)
+        The <Route> component specifies a URL path, and the associated component to render for that path:
+            <Route path="/about" element={<About />} />
+        The <Routes> component wraps all <Route> components if there are multiple
+    3. Navigate to a route
+        (define links that the user can use in the UI, and directly navigate through code)
+
+Command:
+    npm i react-router-dom
+
+
+--------------------------------------------------------------------------------------------
+Nested Routes
+--------------------------------------------------------------------------------------------
+By nesting a <Route> element within another <Route> element, it's possible to create multiple pages with similar layouts
+    <Route path="/" element={<MainLayout />} >
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+    <Route/>
+
+Whatever the <MainLayout> component contains will be returned on each page, but a special exception is the <Outlet>.
+By including an <Outlet> component in the <MainLayout>'s return, it's possible to specify a place where child 
+elements' contents (return values) will be inserted.
+In the above example, the <About> or <Contact> elements would be inserted in the <Outlet> space.
+
+
+--------------------------------------------------------------------------------------------
+Navigate
+--------------------------------------------------------------------------------------------
+A <Navigate> component will navigate whenever it is rendered using its "to" prop
+The specified route must be declared before setting up the redirect.
+This can also be used to navigate away from a No Match case.
+
+Almost the entire implementation of this can be found in HomeButton under components.
+The HomeButton was added to the Header component.
+
+
+
+--------------------------------------------------------------------------------------------
+NavLink
+--------------------------------------------------------------------------------------------
+A link component that has an "active" property. Useful to show the currently selected link (like in a navbar).
+The isActive property is built-in, but still needs to be connected to css to give styles.
+Inline:
+    <NavLink
+    style={({ isActive }) => isActive ? { color: "orange" } : { color: "blue" }}
+    to="/" > 
+        Home
+    </NavLink>
+
+CSS:
+    <NavLink
+    className={({ isActive }) =>
+    isActive ? "link-active" : "link-inactive" }
+    to="/about" > 
+        About
+    </NavLink>      

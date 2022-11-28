@@ -1,39 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
+import {Route, Routes, Link} from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import MainLayout from "./layouts/MainLayout";
+
 
 function App() {
-  const [color, setColor] = React.useState(JSON.parse(sessionStorage.getItem('color')) || "blue");
-  const [count, setCount] = React.useState(JSON.parse(localStorage.getItem('count')) || 0);
-  
-  React.useEffect(() => {
-      sessionStorage.setItem('color', JSON.stringify(color));
-      localStorage.setItem('count', JSON.stringify(count));
-  }, [color, count]);
-
-  return (<div>
-      <DisplayMessage color={color}/>
-      <Clock time={new Date().toLocaleTimeString()} />
-      <p>{count}</p>
-      <button onClick={() => {setColor(toggle(color)); setCount(count+1)}}>Click me</button>
-  </div>
+  return(
+    <div>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+        </Route>
+        {/* For a No Match entry from the user, we can avoid crashing with the wildcard route: * 
+          Note that the layout of a parent route will still apply if it is nested */}
+        <Route path="*" element={<p>Invalid URL <Link to="/">Home</Link></p>} />
+      </Routes> 
+    </div>
   );
-  
-}
-
-function DisplayMessage(props) {
-return <h1 style={{color:props.color}}>Hello React World - Storage</h1>;
-}
-function Clock(props) {
-return <p>React Clock: {props.time} </p>
-}
-function toggle(color){
-  if (color === "blue"){
-      return "red";
-  }
-  else{
-      return "blue";
-  }
 }
 
 export default App;
