@@ -18,11 +18,25 @@ function Main() {
     }, [color, count]);
     return (
       <div>
-        <DisplayMessage color={color} />
-        <Clock />
-        <CounterDisplay count={count} />
-        {/* The UserActions component takes the following props as inputs*/}
-        <UserActions setColor={setColor} setCount={setCount} count={count} color={color} />
+        <div>
+          <table style={{width:"100%"}}>
+            <tr>
+              <td style={{width: "100%" }}>
+                <DisplayMessage color={color}/>
+              </td>
+            </tr>
+            <tr>
+            <td style={{textAlign: "center", width: "100%"}}>
+                <Clock />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <CounterDisplay count={count} />
+          {/* The UserActions component takes the following props as inputs*/}
+          <UserActions setColor={setColor} setCount={setCount} count={count} color={color} />
+        </div>
       </div>
     );
   }

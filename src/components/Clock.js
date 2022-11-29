@@ -13,7 +13,7 @@ export function Clock(props) {
             clearInterval(interval);
         };
     }, [time]);
-    return <p>React Clock: {time} </p>;
+    return <p><b>React Clock:</b> {time} </p>;
 }
 
 export default Clock;

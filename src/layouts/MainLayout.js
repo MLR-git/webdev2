@@ -8,7 +8,7 @@ export function MainLayout(){
         <div>
             <Header />
             <Outlet />
-            <Footer />
+            <Footer style={{position: "relative"}}/>
         </div>
     );
 };

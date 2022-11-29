@@ -1,5 +1,5 @@
 import {NavLink, useMatch, useResolvedPath} from "react-router-dom"
-import Button from 'react-bootstrap/Button';
+import Button from "@mui/material/Button";
 
 //To change a button based on the current link, we need to match the current path name to the button's value
 function NavButton(props){
@@ -10,32 +10,39 @@ function NavButton(props){
     let match = useMatch({ path: resolved.pathname, end: true });
 
     const buttonStyle = {
-        backgroundColor: "green",
-        border: "none",
+        backgroundColor: "SlateGrey ",
+        border: "1px solid cyan",
         color: "white",
-        padding: "15px 32px",
+        paddingTop: "20px",
+        paddingLeft: "15px",
+        paddingRight: "15px",
+        margin: "10px",
         textAlign: "center",
         textDecoration: "none",
-        display: "inline-block",
-        fontSize: "16px",
+        fontSize: "18px",
+        fontFamily: "Lucida Console",
+        verticalAlign: "middle",
     };
 
     const activeButtonStyle = {
-        backgroundColor: "red",
-        border: "none",
+        backgroundColor: "PowderBlue",
+        border: "1px solid cyan",
         color: "black",
-        padding: "15px 32px",
+        paddingTop: "20px",
+        paddingLeft: "15px",
+        paddingRight: "15px",
+        margin: "10px",
         textAlign: "center",
         textDecoration: "none",
-        display: "inline-block",
-        fontSize: "16px",
+        fontSize: "18px",
+        fontFamily: "Lucida Console",
+        fontWeight: "bold",
     };
 
     return (
         //What is returned is, effectively, a button which checks if the match defined above is true or false
         <NavLink to={props.to}>
-            <Button variant="primary" style={match ? activeButtonStyle : buttonStyle}>
-                {/* Another props is inserted here to enter a name for the label on instantiation */}
+            <Button variant="contained" style={match ? activeButtonStyle : buttonStyle}>
                 <p>{props.label}</p>
             </Button>
         </NavLink>
