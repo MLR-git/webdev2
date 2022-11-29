@@ -12,7 +12,11 @@ export function UserActions(props) {
         props.setCount(props.count + 1);
     };
     //Preferable to define the function outside of the element as shown here
-    return <button onClick={handleOnClick}>Click me React</button>;
+    return  <div style={{ width: "100%", textAlign: "center"}}>
+                <button onClick={handleOnClick}>
+                    Click me React
+                    </button>
+            </div>;
 }
 
 export default UserActions;
